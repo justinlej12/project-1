@@ -1,83 +1,69 @@
 /**
  * Copyright 2026 justinlej12
- * @license Apache-2.0, see LICENSE for full text.
+ * @license Apache-2.0
  */
+
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
-import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
-/**
- * `project-1`
- * 
- * @demo index.html
- * @element project-1
- */
-export class Project1 extends DDDSuper(I18NMixin(LitElement)) {
+import "./fox-card.js";
 
-  static get tag() {
-    return "project-1";
-  }
+class Project1 extends DDDSuper(LitElement) {
+
+  static properties = {
+    image: { type: String },
+    link: { type: String }
+  };
 
   constructor() {
     super();
-    this.title = "";
-    this.t = this.t || {};
-    this.t = {
-      ...this.t,
-      title: "Title",
-    };
-    this.registerLocalization({
-      context: this,
-      localesPath:
-        new URL("./locales/project-1.ar.json", import.meta.url).href +
-        "/../",
-    });
+    this.image = "";
+    this.link = "";
   }
 
-  // Lit reactive properties
-  static get properties() {
-    return {
-      ...super.properties,
-      title: { type: String },
-    };
+  connectedCallback() {
+    super.connectedCallback();
+    this.loadFox();
   }
 
-  // Lit scoped styles
-  static get styles() {
-    return [super.styles,
+  async loadFox() {
+    try {
+
+      const response = await fetch("https://randomfox.ca/floof/");
+      const data = await response.json();
+
+      this.image = data.image;
+      this.link = data.link;
+
+    } catch (error) {
+      console.error("Fox API failed", error);
+    }
+  }
+
+  static styles = [
+    super.styles,
     css`
       :host {
         display: block;
-        color: var(--ddd-theme-primary);
-        background-color: var(--ddd-theme-accent);
-        font-family: var(--ddd-font-navigation);
       }
-      .wrapper {
-        margin: var(--ddd-spacing-2);
-        padding: var(--ddd-spacing-4);
-      }
-      h3 span {
-        font-size: var(--project-1-label-font-size, var(--ddd-font-size-s));
-      }
-    `];
-  }
+    `
+  ];
 
-  // Lit render the HTML
   render() {
     return html`
-<div class="wrapper">
-  <h3><span>${this.t.title}:</span> ${this.title}</h3>
-  <slot></slot>
-</div>`;
-  }
 
-  /**
-   * haxProperties integration via file reference
-   */
-  static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
-      .href;
+      ${this.image
+        ? html`
+            <fox-card
+              .image=${this.image}
+              .link=${this.link}>
+            </fox-card>
+          `
+        : html`<p>Loading fox...</p>`
+      }
+
+    `;
   }
 }
 
-globalThis.customElements.define(Project1.tag, Project1);
+customElements.define("project-1", Project1);
