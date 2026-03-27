@@ -29,7 +29,7 @@ class Project1 extends DDDSuper(LitElement) {
 
   async loadPhotos() {
     try {
-      const response = await fetch("./data/photos.json");
+      const response = await fetch(new URL ("./data/photos.json", import.meta.url).href);
       const data = await response.json();
       this.photos = data.photos;
     } catch (e) {
@@ -88,7 +88,7 @@ class Project1 extends DDDSuper(LitElement) {
       ${this.photos.length > 0
         ? html`
             <div @vote=${this.handleVote}>
-              <play-list>=
+              <play-list>
                 ${this.photos.map((photo, index) => html`
                     <fox-card
                       .index=${index}

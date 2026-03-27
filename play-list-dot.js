@@ -4,7 +4,7 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 class PlayListDot extends DDDSuper(LitElement) {
   static properties = {
     active: { type: Boolean },
-    index: { type: Number }
+    index: { type: Number },
   };
 
   static styles = [
@@ -24,15 +24,15 @@ class PlayListDot extends DDDSuper(LitElement) {
       button.active {
         background: var(--ddd-theme-default-beaverBlue);
       }
-    `
+    `,
   ];
 
   render() {
     return html`
       <button
         class=${this.active ? "active" : ""}
-        @click=${this._click}>
-      </button>
+        @click=${this._click}
+      ></button>
     `;
   }
 
@@ -41,7 +41,7 @@ class PlayListDot extends DDDSuper(LitElement) {
       new CustomEvent("dot-click", {
         bubbles: true,
         composed: true,
-        detail: { index: this.index }
+        detail: { index: this.index },
       })
     );
   }

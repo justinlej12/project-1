@@ -53,13 +53,22 @@ class PlayList extends DDDSuper(LitElement) {
 
   render() {
     return html`
-      <div class="slides" style="transform: translateY(-${this.index * 100}%);">
+      <div
+        class="slides"
+        style="transform: translateY(-${this.index * 100}%);"
+      >
         <slot @slotchange=${this._handleSlotChange}></slot>
       </div>
+
       <div class="controls">
-        <play-list-arrow direction="up"></play-list-arrow>=
+        <play-list-arrow direction="up"></play-list-arrow>
         ${Array.from({ length: this._slideCount }).map(
-          (_, i) => html` <play-list-dot .index=${i} .active=${i === this.index}> </play-list-dot>`
+          (_, i) => html`
+            <play-list-dot
+              .index=${i}
+              .active=${i === this.index}>
+            </play-list-dot>
+          `
         )}
         <play-list-arrow direction="down"></play-list-arrow>
       </div>

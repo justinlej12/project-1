@@ -97,7 +97,6 @@ class FoxCard extends DDDSuper(LitElement) {
         overflow: hidden;
         text-overflow: ellipsis;
       }
-      /* Dark mode support*/
       @media (prefers-color-scheme: dark) {
         .card {
             background: #1c1c1c;
@@ -119,7 +118,7 @@ class FoxCard extends DDDSuper(LitElement) {
         .header {
             color: white;
         }
-    }
+        }
     `
   ];
 
@@ -137,12 +136,14 @@ class FoxCard extends DDDSuper(LitElement) {
           <div class="actions">
             <span
               class="button ${this.userVote === "like" ? "selected-like" : ""}"
-              @click=${() => this.vote("like")} >
+              @click=${() => this.vote("like")}
+            >
               ❤️ ${this.likes}
             </span>
             <span
               class="button ${this.userVote === "dislike" ? "selected-dislike" : ""}"
-              @click=${() => this.vote("dislike")}>
+              @click=${() => this.vote("dislike")}
+            >
               👎 ${this.dislikes}
             </span>
           </div>
