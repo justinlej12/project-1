@@ -1,0 +1,199 @@
+{
+  "photos": [
+    {
+      "image": "https://randomfox.ca/images/1.jpg",
+      "thumbnail": "https://randomfox.ca/images/1.jpg",
+      "title": "Morning Watch",
+      "description": "A red fox resting peacefully in the snow.",
+      "date": "2023-01-01",
+      "author": {
+        "name": "Fox Daily",
+        "avatar": "https://i0.wp.com/www.roeselienraimond.com/wp-content/uploads/2025/07/happy-smiling-zen-fox-roeselien-raimond.webp",
+        "channel": "Wildlife Media",
+        "userSince": "2020"
+      }
+    },
+    {
+      "image": "https://randomfox.ca/images/2.jpg",
+      "thumbnail": "https://randomfox.ca/images/2.jpg",
+      "title": "Curious Glance",
+      "description": "A fox looking directly into the camera with curiosity.",
+      "date": "2023-01-02",
+      "author": {
+        "name": "Fox Daily",
+        "avatar": "https://i0.wp.com/www.roeselienraimond.com/wp-content/uploads/2025/07/happy-smiling-zen-fox-roeselien-raimond.webp",
+        "channel": "Wildlife Media",
+        "userSince": "2020"
+      }
+    },
+    {
+      "image": "https://randomfox.ca/images/3.jpg",
+      "thumbnail": "https://randomfox.ca/images/3.jpg",
+      "title": "Forest Path",
+      "description": "A young fox exploring a quiet forest trail.",
+      "date": "2023-01-03",
+      "author": {
+        "name": "Fox Daily",
+        "avatar": "https://i0.wp.com/www.roeselienraimond.com/wp-content/uploads/2025/07/happy-smiling-zen-fox-roeselien-raimond.webp",
+        "channel": "Wildlife Media",
+        "userSince": "2020"
+      }
+    },
+    {
+      "image": "https://randomfox.ca/images/4.jpg",
+      "thumbnail": "https://randomfox.ca/images/4.jpg",
+      "title": "Golden Hour",
+      "description": "Two foxes enjoying the warm glow of sunset.",
+      "date": "2023-01-04",
+      "author": {
+        "name": "Fox Daily",
+        "avatar": "https://i0.wp.com/www.roeselienraimond.com/wp-content/uploads/2025/07/happy-smiling-zen-fox-roeselien-raimond.webp",
+        "channel": "Wildlife Media",
+        "userSince": "2020"
+      }
+    },
+    {
+      "image": "https://randomfox.ca/images/5.jpg",
+      "thumbnail": "https://randomfox.ca/images/5.jpg",
+      "title": "Snow Tracks",
+      "description": "Fresh fox tracks leading through the snow.",
+      "date": "2023-01-05",
+      "author": {
+        "name": "Fox Daily",
+        "avatar": "https://i0.wp.com/www.roeselienraimond.com/wp-content/uploads/2025/07/happy-smiling-zen-fox-roeselien-raimond.webp",
+        "channel": "Wildlife Media",
+        "userSince": "2020"
+      }
+    },
+    {
+      "image": "https://randomfox.ca/images/6.jpg",
+      "thumbnail": "https://randomfox.ca/images/6.jpg",
+      "title": "Alert Ears",
+      "description": "A fox listening carefully to sounds in the distance.",
+      "date": "2023-01-06",
+      "author": {
+        "name": "Fox Daily",
+        "avatar": "https://i0.wp.com/www.roeselienraimond.com/wp-content/uploads/2025/07/happy-smiling-zen-fox-roeselien-raimond.webp",
+        "channel": "Wildlife Media",
+        "userSince": "2020"
+      }
+    },
+    {
+      "image": "https://randomfox.ca/images/7.jpg",
+      "thumbnail": "https://randomfox.ca/images/7.jpg",
+      "title": "Hidden in Grass",
+      "description": "A fox blending into tall grass while observing.",
+      "date": "2023-01-07",
+      "author": {
+        "name": "Fox Daily",
+        "avatar": "https://i0.wp.com/www.roeselienraimond.com/wp-content/uploads/2025/07/happy-smiling-zen-fox-roeselien-raimond.webp",
+        "channel": "Wildlife Media",
+        "userSince": "2020"
+      }
+    },
+    {
+      "image": "https://randomfox.ca/images/8.jpg",
+      "thumbnail": "https://randomfox.ca/images/8.jpg",
+      "title": "Winter Coat",
+      "description": "A rare blue fox standing proudly in winter.",
+      "date": "2023-01-08",
+      "author": {
+        "name": "Fox Daily",
+        "avatar": "https://i0.wp.com/www.roeselienraimond.com/wp-content/uploads/2025/07/happy-smiling-zen-fox-roeselien-raimond.webp",
+        "channel": "Wildlife Media",
+        "userSince": "2020"
+      }
+    },
+    {
+      "image": "https://randomfox.ca/images/9.jpg",
+      "thumbnail": "https://randomfox.ca/images/9.jpg",
+      "title": "Silent Step",
+      "description": "A fox quietly stepping through snow.",
+      "date": "2023-01-09",
+      "author": {
+        "name": "Fox Daily",
+        "avatar": "https://i0.wp.com/www.roeselienraimond.com/wp-content/uploads/2025/07/happy-smiling-zen-fox-roeselien-raimond.webp",
+        "channel": "Wildlife Media",
+        "userSince": "2020"
+      }
+    },
+    {
+      "image": "https://randomfox.ca/images/10.jpg",
+      "thumbnail": "https://randomfox.ca/images/10.jpg",
+      "title": "Focused Hunt",
+      "description": "A fox preparing carefully for a hunt.",
+      "date": "2023-01-10",
+      "author": {
+        "name": "Fox Daily",
+        "avatar": "https://i0.wp.com/www.roeselienraimond.com/wp-content/uploads/2025/07/happy-smiling-zen-fox-roeselien-raimond.webp",
+        "channel": "Wildlife Media",
+        "userSince": "2020"
+      }
+    },
+    {
+      "image": "https://randomfox.ca/images/11.jpg",
+      "thumbnail": "https://randomfox.ca/images/11.jpg",
+      "title": "Evening Calm",
+      "description": "Foxes resting together in the snow at dusk.",
+      "date": "2023-01-11",
+      "author": {
+        "name": "Fox Daily",
+        "avatar": "https://i0.wp.com/www.roeselienraimond.com/wp-content/uploads/2025/07/happy-smiling-zen-fox-roeselien-raimond.webp",
+        "channel": "Wildlife Media",
+        "userSince": "2020"
+      }
+    },
+    {
+      "image": "https://randomfox.ca/images/12.jpg",
+      "thumbnail": "https://randomfox.ca/images/12.jpg",
+      "title": "Sharp Gaze",
+      "description": "A fox intensely watching its surroundings.",
+      "date": "2023-01-12",
+      "author": {
+        "name": "Fox Daily",
+        "avatar": "https://i0.wp.com/www.roeselienraimond.com/wp-content/uploads/2025/07/happy-smiling-zen-fox-roeselien-raimond.webp",
+        "channel": "Wildlife Media",
+        "userSince": "2020"
+      }
+    },
+    {
+      "image": "https://randomfox.ca/images/13.jpg",
+      "thumbnail": "https://randomfox.ca/images/13.jpg",
+      "title": "Quick Movement",
+      "description": "Two foxes playing together energetically.",
+      "date": "2023-01-13",
+      "author": {
+        "name": "Fox Daily",
+        "avatar": "https://i0.wp.com/www.roeselienraimond.com/wp-content/uploads/2025/07/happy-smiling-zen-fox-roeselien-raimond.webp",
+        "channel": "Wildlife Media",
+        "userSince": "2020"
+      }
+    },
+    {
+      "image": "https://randomfox.ca/images/14.jpg",
+      "thumbnail": "https://randomfox.ca/images/14.jpg",
+      "title": "Playful Moment",
+      "description": "A fox resting peacefully after playtime.",
+      "date": "2023-01-14",
+      "author": {
+        "name": "Fox Daily",
+        "avatar": "https://i0.wp.com/www.roeselienraimond.com/wp-content/uploads/2025/07/happy-smiling-zen-fox-roeselien-raimond.webp",
+        "channel": "Wildlife Media",
+        "userSince": "2020"
+      }
+    },
+    {
+      "image": "https://randomfox.ca/images/15.jpg",
+      "thumbnail": "https://randomfox.ca/images/15.jpg",
+      "title": "Final Glance",
+      "description": "A bright white fox standing out in winter.",
+      "date": "2023-01-15",
+      "author": {
+        "name": "Fox Daily",
+        "avatar": "https://i0.wp.com/www.roeselienraimond.com/wp-content/uploads/2025/07/happy-smiling-zen-fox-roeselien-raimond.webp",
+        "channel": "Wildlife Media",
+        "userSince": "2020"
+      }
+    }
+  ]
+}
