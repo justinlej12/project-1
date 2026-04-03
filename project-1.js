@@ -5,12 +5,12 @@ import "./fox-card.js";
 import "./play-list.js";
 
 class Project1 extends DDDSuper(LitElement) {
-
   static properties = {
     photos: { type: Array },
     likes: { type: Object },
     dislikes: { type: Object },
-    userVotes: { type: Object }
+    userVotes: { type: Object },
+    index: { type: Number }
   };
 
   constructor() {
@@ -19,22 +19,34 @@ class Project1 extends DDDSuper(LitElement) {
     this.likes = {};
     this.dislikes = {};
     this.userVotes = {};
+    this.index = 0;
   }
 
   connectedCallback() {
     super.connectedCallback();
     this.loadFromStorage();
+    this.loadIndexFromURL();
     this.loadPhotos();
   }
 
+  loadIndexFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    const i = parseInt(params.get("index"));
+    if (!isNaN(i)) this.index = i;
+  }
+
+  updateURL() {
+    const url = new URL(window.location);
+    url.searchParams.set("index", this.index);
+    window.history.replaceState({}, "", url);
+  }
+
   async loadPhotos() {
-    try {
-      const response = await fetch(new URL ("./data/photos.json", import.meta.url).href);
-      const data = await response.json();
-      this.photos = data.photos;
-    } catch (e) {
-      console.error("JSON load failed", e);
-    }
+    const response = await fetch(
+      new URL("./data/photos.json", import.meta.url).href
+    );
+    const data = await response.json();
+    this.photos = data.photos;
   }
 
   saveToStorage() {
@@ -44,69 +56,67 @@ class Project1 extends DDDSuper(LitElement) {
   }
 
   loadFromStorage() {
-    const savedLikes = localStorage.getItem("foxLikes");
-    const savedDislikes = localStorage.getItem("foxDislikes");
-    const savedVotes = localStorage.getItem("foxVotes");
-    if (savedLikes) this.likes = JSON.parse(savedLikes);
-    if (savedDislikes) this.dislikes = JSON.parse(savedDislikes);
-    if (savedVotes) this.userVotes = JSON.parse(savedVotes);
+    this.likes = JSON.parse(localStorage.getItem("foxLikes")) || {};
+    this.dislikes = JSON.parse(localStorage.getItem("foxDislikes")) || {};
+    this.userVotes = JSON.parse(localStorage.getItem("foxVotes")) || {};
   }
 
-  /* Like/dislike local storage logice */
   handleVote(e) {
     const { index, type } = e.detail;
     const prev = this.userVotes[index];
-    if (prev === "like") this.likes[index] = Math.max((this.likes[index] || 1) - 1, 0);
-    if (prev === "dislike") this.dislikes[index] = Math.max((this.dislikes[index] || 1) - 1, 0);
+
+    if (prev === "like") this.likes[index]--;
+    if (prev === "dislike") this.dislikes[index]--;
+
     if (prev === type) {
       this.userVotes[index] = "";
     } else {
-      if (type === "like") {
-        this.likes[index] = (this.likes[index] || 0) + 1;
-      } else {
-        this.dislikes[index] = (this.dislikes[index] || 0) + 1;
-      }
+      if (type === "like") this.likes[index] = (this.likes[index] || 0) + 1;
+      if (type === "dislike") this.dislikes[index] = (this.dislikes[index] || 0) + 1;
       this.userVotes[index] = type;
     }
+
     this.saveToStorage();
-    this.likes = { ...this.likes };
-    this.dislikes = { ...this.dislikes };
-    this.userVotes = { ...this.userVotes };
+    this.requestUpdate();
   }
 
-  static styles = [
-    super.styles,
-    css`
-      :host {
-        display: block;
-      }
-    `
-  ];
+  handleSlideChange(e) {
+    this.index = e.detail.index;
+    this.updateURL();
+  }
+
+  sharePhoto(index) {
+    const url = `${window.location.origin}?index=${index}`;
+    navigator.clipboard.writeText(url);
+    alert("Link copied!");
+  }
 
   render() {
     return html`
-      ${this.photos.length > 0
+      ${this.photos.length
         ? html`
-            <div @vote=${this.handleVote}>
-              <play-list>
-                ${this.photos.map((photo, index) => html`
-                    <fox-card
-                      .index=${index}
-                      .image=${photo.image}
-                      .title=${photo.title}
-                      .description=${photo.description}
-                      .author=${photo.author}
-                      .avatar=${photo.avatar}
-                      .likes=${this.likes[index] || 0}
-                      .dislikes=${this.dislikes[index] || 0}
-                      .userVote=${this.userVotes[index] || ""}>
-                    </fox-card>
-                `)}
-              </play-list>
-            </div>
+            <play-list
+              .index=${this.index}
+              @index-changed=${this.handleSlideChange}
+              @vote=${this.handleVote}
+              @share=${(e) => this.sharePhoto(e.detail.index)}
+            >
+              ${this.photos.map((photo, i) => html`
+                <fox-card
+                  .index=${i}
+                  .image=${Math.abs(i - this.index) <= 1 ? photo.image : photo.thumbnail}
+                  .title=${photo.title}
+                  .description=${photo.description}
+                  .author=${photo.author.name}
+                  .avatar=${photo.author.avatar}
+                  .likes=${this.likes[i] || 0}
+                  .dislikes=${this.dislikes[i] || 0}
+                  .userVote=${this.userVotes[i] || ""}
+                ></fox-card>
+              `)}
+            </play-list>
           `
-        : html`<p>Loading gallery...</p>`
-      }
+        : html`<p>Loading...</p>`}
     `;
   }
 }

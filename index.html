@@ -1,12 +1,11 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <base href="/">
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Fox</title>
+  <title>Fox Gallery</title>
 
   <style>
     body {
@@ -15,33 +14,32 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-  
       background-image: url("https://wallpapers.com/images/featured/4k-forest-background-5jlznfc66xy3xec3.jpg");
+      background-size: cover;
+    }
 
-    }
-  
     #demo {
-      width: 400px;
+      width: 100%;
+      max-width: 420px;
     }
-  
+
     h1 {
       text-align: center;
       color: white;
+    }
+
+    project-1:not(:defined) {
+      display: none;
     }
   </style>
 </head>
 
 <body>
-
   <div id="demo">
     <h1>Fox Gallery</h1>
-
-    <!-- main component -->
     <project-1></project-1>
-
   </div>
 
   <script type="module" src="./project-1.js"></script>
-
 </body>
 </html>

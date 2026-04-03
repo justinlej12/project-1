@@ -6,7 +6,7 @@ import "./play-list-dot.js";
 
 class PlayList extends DDDSuper(LitElement) {
   static properties = {
-    index: { type: Number },
+    index: Number,
     _slideCount: { state: true }
   };
 
@@ -24,7 +24,7 @@ class PlayList extends DDDSuper(LitElement) {
         position: relative;
         height: 600px;
         overflow: hidden;
-        padding-right: 50px;
+        padding-right: 60px;
       }
 
       .slides {
@@ -45,11 +45,20 @@ class PlayList extends DDDSuper(LitElement) {
         transform: translateY(-50%);
         display: flex;
         flex-direction: column;
-        align-items: center;
         gap: 10px;
       }
     `
   ];
+
+  updated(changed) {
+    if (changed.has("index")) {
+      this.dispatchEvent(new CustomEvent("index-changed", {
+        detail: { index: this.index },
+        bubbles: true,
+        composed: true
+      }));
+    }
+  }
 
   render() {
     return html`
@@ -62,34 +71,30 @@ class PlayList extends DDDSuper(LitElement) {
 
       <div class="controls">
         <play-list-arrow direction="up"></play-list-arrow>
+
         ${Array.from({ length: this._slideCount }).map(
           (_, i) => html`
-            <play-list-dot
-              .index=${i}
-              .active=${i === this.index}>
-            </play-list-dot>
+            <play-list-dot .index=${i} .active=${i === this.index}></play-list-dot>
           `
         )}
+
         <play-list-arrow direction="down"></play-list-arrow>
       </div>
     `;
   }
 
   _handleSlotChange(e) {
-    const assigned = e.target.assignedElements({ flatten: true });
-    this._slideCount = assigned.length;
+    this._slideCount = e.target.assignedElements().length;
   }
 
   connectedCallback() {
     super.connectedCallback();
+
     this.addEventListener("arrow-click", e => {
-      if (e.detail.direction === "up") {
-        this.index =
-          this.index === 0 ? this._slideCount - 1 : this.index - 1;
-      } else {
-        this.index =
-          this.index === this._slideCount - 1 ? 0 : this.index + 1;
-      }
+      this.index =
+        e.detail.direction === "up"
+          ? (this.index - 1 + this._slideCount) % this._slideCount
+          : (this.index + 1) % this._slideCount;
     });
 
     this.addEventListener("dot-click", e => {
